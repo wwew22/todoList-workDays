@@ -5,49 +5,128 @@
 }
 
 body {
-    background-image: linear-gradient(120deg, #e2bd41, #dd6e4f);
+    background: linear-gradient(182deg, #2e9278, #2e7b92, #A0C1B9, #706993);
+    background-size: 800% 800%;
     color: white;
-    font-family: 'Poppins', sans-serif;
-    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    animation: gradient 15s ease infinite;
+    -webkit-animation: gradient 28s ease infinite;
+    -moz-animation: gradient 28s ease infinite;
+    animation: gradient 28s ease infinite;
+} 
+
+    @-webkit-keyframes gradient {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+    }
+    @-moz-keyframes gradient {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+    }
+    @keyframes gradient {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+    }
+
+h1 {    
+    text-transform: uppercase;
+    font-weight: 100;
 }
-h1 {
-    font-weight: 400;
-}
-header {
-    font-size: 1.5rem;
-}
-header,
-form {
-    min-height: 20vh;
+
+.weekDay {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 3rem;
+    gap: 3rem;
+    height: 100vh;
+}
+
+.weekDay {
+    /* flex: 0 40%; */
+    
+}
+
+.selectWrraper {
+    padding-bottom: 10rem;
+}
+
+header {
+    font-size: 1.1rem;
+}
+
+header,
+form {
+    min-height: 10vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 0.5rem;
+}
+
+form {
+    flex-direction: row;
+}
+
 form input, form button {
-    padding: 0.5rem;
-    font-size: 2rem;
+    padding: 0.9rem;
+    font-size: 1rem;
     border: none;
     background: white;
+    font-family: 'Roboto', sans-serif !important;
 }
+
+.todo-input,
+.todo-input-tuesday,
+.todo-input-wednesday,
+.todo-input-thursday,
+.todo-input-friday{
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 300;
+}
+
 form button {
-    color: #dd6e4f;
+    color: #335C67;
     background: white;
     cursor: pointer;
     transition: all 0.3s ease;
 }
+
 form button:hover {
-    background: #dd6e4f;
+    background: #335C67;
     color: white;
 }
 
-.todo-container {
+
+.todo-container,
+.todo-container-tuesday,
+.todo-container-wednesday,
+.todo-container-thursday,
+.todo-container-friday {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
-.todo-list {
-    min-width: 30%;
+.todo-list,
+.todo-list-tuesday,
+.todo-list-wednesday,
+.todo-list-thursday,
+.todo-list-friday {
+    min-width: 20%;
     list-style-type: none;
 }
 
@@ -62,11 +141,17 @@ form button:hover {
 }
 
 .todo li {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
     flex: 1;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.trash-btn, .complete-btn {
-    background: #ff6f47;
+.trash-btn, .complete-btn, .jira-btn {
+    background: #E1B07E;
     color: white;
     border: none;
     padding: 1rem;
@@ -74,8 +159,22 @@ form button:hover {
     font-size: 1rem;
 }
 
+.jira-btn {
+    background: #2E86AB;
+    color: white;
+}
+
+.fa-jira {
+    margin-left: 10px;
+}
+
 .complete-btn {
-    background: #1dad30;
+    background: #70A288;
+    transition: all .2s ease;
+}
+
+.complete-btn:active {
+    background: #70A288;
 }
 
 .todo-item {
@@ -86,13 +185,22 @@ form button:hover {
 }
 
 .fa-trash, 
-.fa-check {
+.fa-check,
+.fa-cloud-arrow-up {
     pointer-events: none;
+    font-size: 1rem;
+}
+
+.doneUp {
+    text-decoration: line-through;
+    opacity: 0.8;
+    background: #6ce47c;
 }
 
 .completed {
     text-decoration: line-through;
-    opacity: 0.5;
+    opacity: 0.2;
+    background: #2e9278;
 }
 
 .fall {
@@ -106,28 +214,35 @@ select {
     appearance: none;
     outline: none;
     border: none;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-weight: 400;
+
 }
 
 .select {
-    margin: 1rem;
+    margin: 0;
     position: relative;
     overflow: hidden;
+    position: fixed;
+    width: 100%;
 }
 
 select {
-    color: #ff6f47;
-    width: 10rem;
+    color: #0A100D;
+    width: 100%;
     cursor: pointer;
-    padding: 1rem;
+    padding: 2rem;
+    font-size: 1.1;
 }
 
 .select::after {
     content: "\25BC";
     position: absolute;
-    background:#ff6f47;
-    top: -4px;
+    background: #335C67;
+    top: 0;
     right: 0;
-    padding: 1rem;
+    padding: 2.2rem;
     pointer-events: none;
     display: flex;
     transition: all 0.3s ease;
@@ -135,5 +250,8 @@ select {
 
 .select:hover::after {
     background: white;
-    color: #ff6f47;
+    color: #335C67;
+    
 }
+
+
