@@ -20,24 +20,8 @@ const todoInputFriday = document.querySelector('.todo-input-friday');
 const todoButtonFriday = document.querySelector('.todo-button-friday');
 const todoListFriday = document.querySelector('.todo-list-friday');
 
-//DATE VARs
-// const dateObj = new Date();
-// let past4Day =  dateObj.getDate() - 4 + '/'+ (dateObj.getMonth()+1) + '/' + dateObj.getFullYear();
-// let past3Day =  dateObj.getDate() - 3 + '/'+ (dateObj.getMonth()+1) + '/' + dateObj.getFullYear();
-// let past2Day =  dateObj.getDate() - 2 + '/'+ (dateObj.getMonth()+1) + '/' + dateObj.getFullYear();
-// let past1Day =  dateObj.getDate() - 1 + '/'+ (dateObj.getMonth()+1) + '/' + dateObj.getFullYear();
-// let currentDay = dateObj.getDate() + '/' + (dateObj.getMonth()+1) + '/' + dateObj.getFullYear();
-// let next1Day = dateObj.getDate() + 1 + '/' + (dateObj.getMonth()+1) + '/' + dateObj.getFullYear();
-// let next2Day = dateObj.getDate() + 2 + '/' + (dateObj.getMonth()+1) + '/' + dateObj.getFullYear();
-// let next3Day = dateObj.getDate() + 3 + '/' + (dateObj.getMonth()+1) + '/' + dateObj.getFullYear();
-// let next4Day = dateObj.getDate() + 4 + '/' + (dateObj.getMonth()+1) + '/' + dateObj.getFullYear();
-
-
-// const dayHeaderMonday = document.querySelector('.day1');
-// const dayHeaderTuesday = document.querySelector('.day2');
-// const dayHeaderWednesday = document.querySelector('.day3');
-// const dayHeaderThursday = document.querySelector('.day4');
-// const dayHeaderFriday = document.querySelector('.day5');
+const today = new Date();
+const currentDayOfWeek = today.getDay();
 
 //EVENT LISTENERS
 todoButton.addEventListener("click", addTodo);
@@ -58,10 +42,6 @@ todoListFriday.addEventListener("click", deleteCheck);
 filterOptions.addEventListener("click", filterTodo);
 
 //FUNCTIONS
-
-// Get today's date
-const today = new Date();
-const currentDayOfWeek = today.getDay(); // 0 (Sunday) to 6 (Saturday)
 
 // Calculate the dates for the upcoming days of the week
 for (let i = 1; i <= 5; i++) { // Assuming you have 5 days of the week
@@ -287,21 +267,6 @@ function addTodoFriday(event) {
     todoInputFriday.value = '';
 }
 
-
-//ADD DATE TO HEADER
-
-
-
-// function getDate() {
-    
-//     dayHeaderMonday.innerHTML = dayHeaderMonday.innerHTML + past1Day;
-//     dayHeaderTuesday.innerHTML = dayHeaderTuesday.innerHTML + currentDay;
-//     dayHeaderWednesday.innerHTML = dayHeaderWednesday.innerHTML + next1Day;
-//     dayHeaderThursday.innerHTML = dayHeaderThursday.innerHTML + next2Day;
-//     dayHeaderFriday.innerHTML = dayHeaderFriday.innerHTML + next3Day;
-    
-// }
-// getDate();
 
 //BTN FUNCTION
 function deleteCheck(e) {
