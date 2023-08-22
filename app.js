@@ -59,12 +59,23 @@ filterOptions.addEventListener("click", filterTodo);
 
 //FUNCTIONS
 
+// Get today's date
+const today = new Date();
+const currentDayOfWeek = today.getDay(); // 0 (Sunday) to 6 (Saturday)
 
-  //FUNCTIN CHATGPT DATE
+// Calculate the dates for the upcoming days of the week
+for (let i = 1; i <= 5; i++) { // Assuming you have 5 days of the week
+    const dayIndex = (currentDayOfWeek + i - 1) % 7;
+    const currentDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + i - 2);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = currentDate.toLocaleDateString(undefined, options);
 
-
-
-
+    // Update the span element for the corresponding day
+    const daySpan = document.querySelector(`.day${i}`);
+    if (daySpan) {
+        daySpan.textContent = formattedDate;
+    }
+}
 
 //ADD TODO MONDAY
 function addTodo(event) {

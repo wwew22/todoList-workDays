@@ -4,6 +4,14 @@
     box-sizing: border-box;
 }
 
+input[type=text], 
+input[type=button] {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+}
+
+input {-webkit-appearance: none !important; -webkit-border-radius: 0 !important; font-family: 'Roboto', sans-serif; margin-left: 0px;}
+
 body {
     background: linear-gradient(182deg, #2e9278, #2e7b92, #A0C1B9, #706993);
     background-size: 800% 800%;
@@ -147,10 +155,7 @@ form button:hover {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
     flex: 1;
-    font-size: 15px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 1rem;
 }
 
 .trash-btn, .complete-btn, .jira-btn {
@@ -174,6 +179,7 @@ form button:hover {
 .complete-btn {
     background: #70A288;
     transition: all .2s ease;
+    padding: 0.6rem;
 }
 
 .complete-btn:active {
