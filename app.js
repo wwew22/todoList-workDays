@@ -81,6 +81,9 @@ for (let i = 1; i <= 5; i++) {
 // Load tasks from local storage and populate the task lists
 function loadTasksFromLocalStorage(day, taskList) {
     const tasks = JSON.parse(localStorage.getItem(day)) || [];
+    const doneUpTasks = JSON.parse(localStorage.getItem(`${day}_doneUp`)) || [];
+    const completedTasks = JSON.parse(localStorage.getItem(`${day}_completed`)) || [];
+
     tasks.forEach(task => {
         const todoDiv = document.createElement('div');
         todoDiv.classList.add('todo');
@@ -105,7 +108,13 @@ function loadTasksFromLocalStorage(day, taskList) {
         trashButton.classList.add('trash-btn');
         todoDiv.appendChild(trashButton);
 
-        taskList.appendChild(todoDiv);
+        if (doneUpTasks.includes(task)) {
+            todoDiv.classList.add('doneUp');
+        }
+        
+        if (completedTasks.includes(task)) {
+            todoDiv.classList.add('completed');
+        }
 
         taskList.appendChild(todoDiv);
     });
@@ -352,18 +361,49 @@ function deleteCheck(e) {
         });
     }
     //CHECKMARK
-    if (item.classList[0]=== 'complete-btn') {
+    if (item.classList[0] === 'complete-btn') {
         const todo = item.parentElement;
         todo.classList.toggle("doneUp");
+
+        const day = getDayFromTodoList(todo.parentNode);
+        const taskText = todo.querySelector('.todo-item').innerText;
+        
+        const doneUpTasks = JSON.parse(localStorage.getItem(`${day}_doneUp`)) || [];
+        
+        if (todo.classList.contains('doneUp')) {
+            doneUpTasks.push(taskText);
+        } else {
+            const index = doneUpTasks.indexOf(taskText);
+            if (index !== -1) {
+                doneUpTasks.splice(index, 1);
+            }
+        }
+
+        localStorage.setItem(`${day}_doneUp`, JSON.stringify(doneUpTasks));
     }
 
-    //DONE AND UP
-    if (item.classList[0]=== 'jira-btn') {
+    if (item.classList[0] === 'jira-btn') {
         const todo = item.parentElement;
         todo.classList.toggle("completed");
+
+        const day = getDayFromTodoList(todo.parentNode);
+        const taskText = todo.querySelector('.todo-item').innerText;
+        
+        const completedTasks = JSON.parse(localStorage.getItem(`${day}_completed`)) || [];
+        
+        if (todo.classList.contains('completed')) {
+            completedTasks.push(taskText);
+        } else {
+            const index = completedTasks.indexOf(taskText);
+            if (index !== -1) {
+                completedTasks.splice(index, 1);
+            }
+        }
+
+        localStorage.setItem(`${day}_completed`, JSON.stringify(completedTasks));
     }
 }
-
+//Get Days for local storage trashBtn
 function getDayFromTodoList(todoList) {
     if (todoList === todoListTuesday) {
         return 'tuesday';

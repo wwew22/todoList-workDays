@@ -6,6 +6,7 @@
 
 
 body {
+    height: 100vh;
     background: linear-gradient(182deg, #2e9278, #2e7b92, #A0C1B9, #706993);
     background-size: 800% 800%;
     color: white;
@@ -49,14 +50,12 @@ h1 {
     justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
-    padding: 3rem;
+    padding: 6rem 3rem;
     gap: 3rem;
-    height: 100vh;
 }
 
 .weekDay {
     flex: 0 47%;
-    
 }
 
 .selectWrraper {
@@ -225,7 +224,6 @@ select {
 }
 
 .select {
-    /* z-index: 1; */
     margin: 0;
     position: relative;
     overflow: hidden;
