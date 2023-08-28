@@ -4,13 +4,6 @@
     box-sizing: border-box;
 }
 
-input[type=text], 
-input[type=button] {
-    -webkit-appearance: none;
-    -webkit-border-radius: 0;
-}
-
-input {-webkit-appearance: none !important; -webkit-border-radius: 0 !important; font-family: 'Roboto', sans-serif; margin-left: 0px;}
 
 body {
     background: linear-gradient(182deg, #2e9278, #2e7b92, #A0C1B9, #706993);

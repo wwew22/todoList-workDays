@@ -24,20 +24,47 @@ const today = new Date();
 const currentDayOfWeek = today.getDay();
 
 //EVENT LISTENERS
-todoButton.addEventListener("click", addTodo);
+// todoButton.addEventListener("click", addTodo);
 todoList.addEventListener("click", deleteCheck);
 
-todoButtonTuesday.addEventListener("click", addTodoTuesday);
+// todoButtonTuesday.addEventListener("click", addTodoTuesday);
 todoListTuesday.addEventListener("click", deleteCheck);
 
-todoButtonWednesday.addEventListener("click", addTodoWednesday);
+// todoButtonWednesday.addEventListener("click", addTodoWednesday);
 todoListWednesday.addEventListener("click", deleteCheck);
 
-todoButtonThursday.addEventListener("click", addTodoThursday);
+// todoButtonThursday.addEventListener("click", addTodoThursday);
 todoListThursday.addEventListener("click", deleteCheck);
 
-todoButtonFriday.addEventListener("click", addTodoFriday);
+// todoButtonFriday.addEventListener("click", addTodoFriday);
 todoListFriday.addEventListener("click", deleteCheck);
+
+
+
+todoButton.addEventListener("click", function(event) {
+    addTodo(event, 'monday', todoInput, todoList);
+});
+
+todoButtonTuesday.addEventListener("click", function(event) {
+    addTodo(event, 'tuesday', todoInputTuesday, todoListTuesday);
+});
+
+todoButtonWednesday.addEventListener("click", function(event) {
+    addTodo(event, 'wednesday', todoInputWednesday, todoListWednesday);
+});
+
+todoButtonThursday.addEventListener("click", function(event) {
+    addTodo(event, 'thursday', todoInputThursday, todoListThursday);
+});
+
+todoButtonFriday.addEventListener("click", function(event) {
+    addTodo(event, 'friday', todoInputFriday, todoListFriday);
+});
+
+
+
+
+
 
 filterOptions.addEventListener("click", filterTodo);
 
@@ -46,7 +73,7 @@ filterOptions.addEventListener("click", filterTodo);
 // Calculate the dates for the upcoming days of the week
 for (let i = 1; i <= 5; i++) { // Assuming you have 5 days of the week
     const dayIndex = (currentDayOfWeek + i - 1) % 7;
-    const currentDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + i - 2);
+    const currentDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + i - 1);
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const formattedDate = currentDate.toLocaleDateString(undefined, options);
 
@@ -58,46 +85,126 @@ for (let i = 1; i <= 5; i++) { // Assuming you have 5 days of the week
 }
 
 //ADD TODO MONDAY
-function addTodo(event) {
-    //Prevent form from submiting
+// function addTodo(event) {
+//     //Prevent form from submiting
+//     event.preventDefault();
+
+//     //Todo div 
+//     const todoDiv = document.createElement('div');
+//     todoDiv.classList.add('todo');
+
+//     //Create li
+//     const newTodo = document.createElement('li');
+//     newTodo.innerText = todoInput.value;
+//     newTodo.classList.add('todo-item');
+
+//     //Append li element to the list div
+//     todoDiv.appendChild(newTodo);
+
+
+
+//     //CHECKMARK BUTTON
+//     const completedButton = document.createElement('button');
+//     completedButton.innerHTML = '<i class="fas fa-check"> D / U </i>';
+//     completedButton.classList.add('complete-btn');
+//     todoDiv.appendChild(completedButton);
+
+//     //JIRA BUTTON
+//     const jiraButton = document.createElement('button');
+//     jiraButton.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i>';
+//     jiraButton.classList.add('jira-btn');
+//     todoDiv.appendChild(jiraButton);
+
+//     //TRASH BUTTON
+//     const trashButton = document.createElement('button');
+//     trashButton.innerHTML = '<i class="fas fa-trash"></i>';
+//     trashButton.classList.add('trash-btn');
+//     todoDiv.appendChild(trashButton);
+
+//     //APPEND TO LIST
+//     todoList.appendChild(todoDiv);
+
+//     //CLEAR TODO INPUT VALUE
+//     todoInput.value = '';
+// }
+function addTodo(event, day, inputField, taskList) {
     event.preventDefault();
 
-    //Todo div 
     const todoDiv = document.createElement('div');
     todoDiv.classList.add('todo');
 
-    //Create li
     const newTodo = document.createElement('li');
-    newTodo.innerText = todoInput.value;
+    newTodo.innerText = inputField.value;
     newTodo.classList.add('todo-item');
 
-    //Append li element to the list div
     todoDiv.appendChild(newTodo);
 
-    //CHECKMARK BUTTON
     const completedButton = document.createElement('button');
     completedButton.innerHTML = '<i class="fas fa-check"> D / U </i>';
     completedButton.classList.add('complete-btn');
     todoDiv.appendChild(completedButton);
 
-    //JIRA BUTTON
     const jiraButton = document.createElement('button');
     jiraButton.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i>';
     jiraButton.classList.add('jira-btn');
     todoDiv.appendChild(jiraButton);
 
-    //TRASH BUTTON
     const trashButton = document.createElement('button');
     trashButton.innerHTML = '<i class="fas fa-trash"></i>';
     trashButton.classList.add('trash-btn');
     todoDiv.appendChild(trashButton);
 
-    //APPEND TO LIST
-    todoList.appendChild(todoDiv);
+    taskList.appendChild(todoDiv);
+    inputField.value = '';
 
-    //CLEAR TODO INPUT VALUE
-    todoInput.value = '';
+    // Save tasks to local storage
+    const existingTasks = JSON.parse(localStorage.getItem(day)) || [];
+    existingTasks.push(newTodo.innerText);
+    saveTasksToLocalStorage(day, existingTasks);
 }
+// Load tasks from local storage and populate the task lists
+function loadTasksFromLocalStorage(day, taskList) {
+    const tasks = JSON.parse(localStorage.getItem(day)) || [];
+    tasks.forEach(task => {
+        const todoDiv = document.createElement('div');
+        todoDiv.classList.add('todo');
+
+        const newTodo = document.createElement('li');
+        newTodo.innerText = task;
+        newTodo.classList.add('todo-item');
+        todoDiv.appendChild(newTodo);
+
+        const completedButton = document.createElement('button');
+        completedButton.innerHTML = '<i class="fas fa-check"> D / U </i>';
+        completedButton.classList.add('complete-btn');
+        todoDiv.appendChild(completedButton);
+
+        const jiraButton = document.createElement('button');
+        jiraButton.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i>';
+        jiraButton.classList.add('jira-btn');
+        todoDiv.appendChild(jiraButton);
+
+        const trashButton = document.createElement('button');
+        trashButton.innerHTML = '<i class="fas fa-trash"></i>';
+        trashButton.classList.add('trash-btn');
+        todoDiv.appendChild(trashButton);
+
+        taskList.appendChild(todoDiv);
+
+        taskList.appendChild(todoDiv);
+    });
+}
+
+// Call the function to load tasks for each day
+loadTasksFromLocalStorage('monday', todoList);
+loadTasksFromLocalStorage('tuesday', todoListTuesday);
+loadTasksFromLocalStorage('wednesday', todoListWednesday);
+loadTasksFromLocalStorage('thursday', todoListThursday);
+loadTasksFromLocalStorage('friday', todoListFriday);
+
+
+
+
 
 //ADD TODO TUESDAY
 function addTodoTuesday(event) {
@@ -158,6 +265,8 @@ function addTodoWednesday(event) {
     //Append li element to the list div
     todoDivWednesday.appendChild(newTodoWednesday);
 
+
+    
     //CHECKMARK BUTTON
     const completedButton = document.createElement('button');
     completedButton.innerHTML = '<i class="fas fa-check"> D / U </i>';
@@ -199,6 +308,7 @@ function addTodoThursday(event) {
 
     //Append li element to the list div
     todoDivThursday.appendChild(newTodoThursday);
+
 
     //CHECKMARK BUTTON
     const completedButton = document.createElement('button');
@@ -242,6 +352,8 @@ function addTodoFriday(event) {
     //Append li element to the list div
     todoDivFriday.appendChild(newTodoFriday);
 
+
+
     //CHECKMARK BUTTON
     const completedButton = document.createElement('button');
     completedButton.innerHTML = '<i class="fas fa-check"> D / U </i>';
@@ -274,10 +386,13 @@ function deleteCheck(e) {
     //delete todo item
     if (item.classList[0]==='trash-btn') {
         const todo = item.parentElement;
+        
         //Animation
         todo.classList.add("fall");
         todo.addEventListener('transitionend', function(){
+            // console.log(todo.innerText[0])
             todo.remove();
+            
         });
     }
     //CHECKMARK
@@ -471,3 +586,18 @@ function filterTodo(e) {
         }
     });
 }
+
+
+//ADDING TO LOCAL STORAGE
+function saveTasksToLocalStorage(day, tasks) {
+    localStorage.setItem(day, JSON.stringify(tasks));
+}
+//ADDING TO LOCAL STORAGE
+function removeTaskFromLocalStorage(taskId) {
+    for (let day of ['monday', 'tuesday', 'wednesday', 'thursday', 'friday']) {
+        const tasks = JSON.parse(localStorage.getItem(day)) || [];
+        const updatedTasks = tasks.filter(task => task.id !== taskId);
+        saveTasksToLocalStorage(day, updatedTasks);
+    }
+}
+
