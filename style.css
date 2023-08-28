@@ -198,13 +198,15 @@ form button:hover {
 }
 
 .doneUp {
-    text-decoration: line-through;
+    color: white;
+    text-decoration: line-through white;
     opacity: 0.8;
     background: #6ce47c;
 }
 
 .completed {
-    text-decoration: line-through;
+    color: white;
+    text-decoration: line-through white;
     opacity: 0.2;
     background: #2e9278;
 }
