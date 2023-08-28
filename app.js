@@ -24,22 +24,15 @@ const today = new Date();
 const currentDayOfWeek = today.getDay();
 
 //EVENT LISTENERS
-// todoButton.addEventListener("click", addTodo);
 todoList.addEventListener("click", deleteCheck);
 
-// todoButtonTuesday.addEventListener("click", addTodoTuesday);
 todoListTuesday.addEventListener("click", deleteCheck);
 
-// todoButtonWednesday.addEventListener("click", addTodoWednesday);
 todoListWednesday.addEventListener("click", deleteCheck);
 
-// todoButtonThursday.addEventListener("click", addTodoThursday);
 todoListThursday.addEventListener("click", deleteCheck);
 
-// todoButtonFriday.addEventListener("click", addTodoFriday);
 todoListFriday.addEventListener("click", deleteCheck);
-
-
 
 todoButton.addEventListener("click", function(event) {
     addTodo(event, 'monday', todoInput, todoList);
@@ -60,7 +53,6 @@ todoButtonThursday.addEventListener("click", function(event) {
 todoButtonFriday.addEventListener("click", function(event) {
     addTodo(event, 'friday', todoInputFriday, todoListFriday);
 });
-
 
 filterOptions.addEventListener("click", filterTodo);
 

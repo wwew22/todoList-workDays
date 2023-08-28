@@ -176,6 +176,9 @@ form button:hover {
     padding: 0.6rem;
 }
 
+.complete-btn .fa-check {
+}
+
 .complete-btn:active {
     background: #70A288;
 }
@@ -207,7 +210,7 @@ form button:hover {
 }
 
 .fall {
-    transform: translateY(8rem) rotateZ(20deg);
+    transform: translateX(-10rem);
     opacity: 0;
 }
 
