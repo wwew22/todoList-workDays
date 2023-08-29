@@ -59,9 +59,9 @@ filterOptions.addEventListener("click", filterTodo);
 //FUNCTIONS
 
 // GET DATES FOR Week Days
-for (let i = 1; i <= 5; i++) { 
-    const dayIndex = (currentDayOfWeek + i - 1) % 7;
-    const currentDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + i - 1);
+for (let i = 1; i <= 5; i++) {
+    const dayToAdd = (i - currentDayOfWeek);
+    const currentDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + dayToAdd);
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const formattedDate = currentDate.toLocaleDateString(undefined, options);
 
