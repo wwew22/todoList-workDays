@@ -51,7 +51,17 @@ h1 {
     align-items: flex-start;
     flex-wrap: wrap;
     padding: 6rem 3rem;
-    gap: 3rem;
+    gap: 2rem;
+}
+
+.listLink {
+    text-decoration: none;
+    color: black;
+    transition: all .4s ease;
+}
+
+.listLink:hover {
+    color: #2E86AB;
 }
 
 .weekDay {
@@ -152,7 +162,7 @@ form button:hover {
     font-size: 1rem;
 }
 
-.trash-btn, .complete-btn, .jira-btn {
+.trash-btn, .complete-btn, .jira-btn, .inProgress-btn {
     background: #E1B07E;
     color: white;
     border: none;
