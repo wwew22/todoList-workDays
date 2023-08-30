@@ -131,7 +131,7 @@ function addTodo(event, day, inputField, taskList) {
     newTodo.classList.add('todo-item');
 
     todoDiv.appendChild(newTodo);
-
+    
     const completedButton = document.createElement('button');
     completedButton.innerHTML = '<i class="fas fa-check"> D / U </i>';
     completedButton.classList.add('complete-btn');

@@ -54,20 +54,6 @@ h1 {
     gap: 2rem;
 }
 
-.listLink {
-    text-decoration: none;
-    color: black;
-    transition: all .4s ease;
-}
-
-.listLink:hover {
-    color: #2E86AB;
-}
-
-.weekDay {
-    flex: 0 47%;
-}
-
 .selectWrraper {
     position: relative;
     z-index: 1;
