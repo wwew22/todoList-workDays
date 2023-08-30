@@ -176,9 +176,6 @@ form button:hover {
     padding: 0.6rem;
 }
 
-.complete-btn .fa-check {
-}
-
 .complete-btn:active {
     background: #70A288;
 }
@@ -254,7 +251,6 @@ select {
 .select::after {
     content: "\25BC";
     position: absolute;
-    background: #185e77;
     top: 0;
     right: 0;
     padding: 2.3rem;
@@ -270,7 +266,7 @@ select {
 }
 
 .filter-todo {
-    background-color: #598392;
+    background-color: #2e7b92 ;
 }
 
 option {
