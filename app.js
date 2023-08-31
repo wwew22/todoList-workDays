@@ -123,6 +123,11 @@ loadTasksFromLocalStorage('friday', todoListFriday);
 function addTodo(event, day, inputField, taskList) {
     event.preventDefault();
 
+    const taskText = inputField.value.trim();
+    if (taskText === "") {
+        return; // Don't add empty tasks
+    }
+
     const todoDiv = document.createElement('div');
     todoDiv.classList.add('todo');
 
@@ -156,6 +161,7 @@ function addTodo(event, day, inputField, taskList) {
     saveTasksToLocalStorage(day, existingTasks);
 
 }
+
 
 //ADD TODO TUESDAY
 function addTodoTuesday(event) {
