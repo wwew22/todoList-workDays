@@ -52,6 +52,13 @@ h1 {
     flex-wrap: wrap;
     padding: 6rem 3rem;
     gap: 2rem;
+    /* USER SELECT */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari, Chrome, Opera, Samsung */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Edge, IE */
+    user-select: none;
 }
 
 .selectWrraper {
@@ -97,6 +104,10 @@ form input, form button {
 .todo-input-friday{
     font-family: 'Roboto', sans-serif !important;
     font-weight: 300;
+}
+
+.displayNone {
+    display: none;
 }
 
 form button {
@@ -146,6 +157,7 @@ form button:hover {
     font-weight: 300;
     flex: 1;
     font-size: 1rem;
+    user-select:all ;
 }
 
 .trash-btn, .complete-btn, .jira-btn, .inProgress-btn {
@@ -217,7 +229,7 @@ select {
     border: none;
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
-    font-weight: 400;
+    font-weight: 300;
 
 }
 
@@ -256,8 +268,8 @@ select {
 }
 
 .select:hover::after {
-    background: white;
-    color: #335C67;
+    background: #335C67;;
+    color: #ffffff;
     
 }
 
@@ -269,3 +281,5 @@ option {
     font-weight: 300;
     font-size: 1.2rem;
 }
+
+
