@@ -76,6 +76,8 @@ function loadTasksFromLocalStorage(day, taskList) {
     const doneUpTasks = JSON.parse(localStorage.getItem(`${day}_doneUp`)) || [];
     const completedTasks = JSON.parse(localStorage.getItem(`${day}_completed`)) || [];
 
+    const htmlDoneTasks = JSON.parse(localStorage.getItem(`${day}_htmlDone`)) || [];
+
     tasks.forEach(task => {
         const todoDiv = document.createElement('div');
         todoDiv.classList.add('todo');
@@ -85,8 +87,13 @@ function loadTasksFromLocalStorage(day, taskList) {
         newTodo.classList.add('todo-item');
         todoDiv.appendChild(newTodo);
 
+        const htmlButton = document.createElement('button');
+        htmlButton.innerHTML = '<i class="fa-regular fa-file-code fa-xl"></i>';
+        htmlButton.classList.add('html-btn');
+        todoDiv.appendChild(htmlButton);
+
         const completedButton = document.createElement('button');
-        completedButton.innerHTML = '<i class="fas fa-check"> D / U </i>';
+        completedButton.innerHTML = '<i class="fa-regular fa-square-check fa-xl"></i>';
         completedButton.classList.add('complete-btn');
         todoDiv.appendChild(completedButton);
 
@@ -99,6 +106,10 @@ function loadTasksFromLocalStorage(day, taskList) {
         trashButton.innerHTML = '<i class="fas fa-trash"></i>';
         trashButton.classList.add('trash-btn');
         todoDiv.appendChild(trashButton);
+
+        if (htmlDoneTasks.includes(task)) {
+            todoDiv.classList.add('htmlDone');
+        }
 
         if (doneUpTasks.includes(task)) {
             todoDiv.classList.add('doneUp');
@@ -119,7 +130,7 @@ loadTasksFromLocalStorage('friday', todoListFriday);
 
 
 
-//ADD TODO MONDAY
+//ADD TODO
 function addTodo(event, day, inputField, taskList) {
     event.preventDefault();
 
@@ -137,8 +148,13 @@ function addTodo(event, day, inputField, taskList) {
 
     todoDiv.appendChild(newTodo);
 
+    const htmlButton = document.createElement('button');
+    htmlButton.innerHTML = '<i class="fa-regular fa-file-code fa-xl"></i>';
+    htmlButton.classList.add('html-btn');
+    todoDiv.appendChild(htmlButton);
+
     const completedButton = document.createElement('button');
-    completedButton.innerHTML = '<i class="fas fa-check"> D / U </i>';
+    completedButton.innerHTML = '<i class="fa-regular fa-square-check fa-xl"></i>';
     completedButton.classList.add('complete-btn');
     todoDiv.appendChild(completedButton);
 
@@ -162,181 +178,6 @@ function addTodo(event, day, inputField, taskList) {
 
 }
 
-
-//ADD TODO TUESDAY
-function addTodoTuesday(event) {
-    //Prevent form from submiting
-    event.preventDefault();
-
-    //Todo div 
-    const todoDivTuesday = document.createElement('div');
-    todoDivTuesday.classList.add('todo');
-
-    //Create li
-    const newTodoTuesday = document.createElement('li');
-    newTodoTuesday.innerText = todoInputTuesday.value;
-    newTodoTuesday.classList.add('todo-item');
-
-    //Append li element to the list div
-    todoDivTuesday.appendChild(newTodoTuesday);
-
-    //CHECKMARK BUTTON
-    const completedButton = document.createElement('button');
-    completedButton.innerHTML = '<i class="fas fa-check"> D / U </i>';
-    completedButton.classList.add('complete-btn');
-    todoDivTuesday.appendChild(completedButton);
-
-    //JIRA BUTTON
-    const jiraButton = document.createElement('button');
-    jiraButton.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i>';
-    jiraButton.classList.add('jira-btn');
-    todoDivTuesday.appendChild(jiraButton);
-
-    //TRASH BUTTON
-    const trashButton = document.createElement('button');
-    trashButton.innerHTML = '<i class="fas fa-trash"></i>';
-    trashButton.classList.add('trash-btn');
-    todoDivTuesday.appendChild(trashButton);
-
-    //APPEND TO LIST
-    todoListTuesday.appendChild(todoDivTuesday);
-
-    //CLEAR TODO INPUT VALUE
-    todoInputTuesday.value = '';
-}
-
-//ADD TODO WEDNESDAY
-function addTodoWednesday(event) {
-    //Prevent form from submiting
-    event.preventDefault();
-
-    //Todo div 
-    const todoDivWednesday = document.createElement('div');
-    todoDivWednesday.classList.add('todo');
-
-    //Create li
-    const newTodoWednesday = document.createElement('li');
-    newTodoWednesday.innerText = todoInputWednesday.value;
-    newTodoWednesday.classList.add('todo-item');
-
-    //Append li element to the list div
-    todoDivWednesday.appendChild(newTodoWednesday);
-
-
-    
-    //CHECKMARK BUTTON
-    const completedButton = document.createElement('button');
-    completedButton.innerHTML = '<i class="fas fa-check"> D / U </i>';
-    completedButton.classList.add('complete-btn');
-    todoDivWednesday.appendChild(completedButton);
-
-    //JIRA BUTTON
-    const jiraButton = document.createElement('button');
-    jiraButton.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i>';
-    jiraButton.classList.add('jira-btn');
-    todoDivWednesday.appendChild(jiraButton);
-
-    //TRASH BUTTON
-    const trashButton = document.createElement('button');
-    trashButton.innerHTML = '<i class="fas fa-trash"></i>';
-    trashButton.classList.add('trash-btn');
-    todoDivWednesday.appendChild(trashButton);
-
-    //APPEND TO LIST
-    todoListWednesday.appendChild(todoDivWednesday);
-
-    //CLEAR TODO INPUT VALUE
-    todoInputWednesday.value = '';
-}
-
-//ADD TODO THURSDAY
-function addTodoThursday(event) {
-    //Prevent form from submiting
-    event.preventDefault();
-
-    //Todo div 
-    const todoDivThursday = document.createElement('div');
-    todoDivThursday.classList.add('todo');
-
-    //Create li
-    const newTodoThursday = document.createElement('li');
-    newTodoThursday.innerText = todoInputThursday.value;
-    newTodoThursday.classList.add('todo-item');
-
-    //Append li element to the list div
-    todoDivThursday.appendChild(newTodoThursday);
-
-
-    //CHECKMARK BUTTON
-    const completedButton = document.createElement('button');
-    completedButton.innerHTML = '<i class="fas fa-check"> D / U </i>';
-    completedButton.classList.add('complete-btn');
-    todoDivThursday.appendChild(completedButton);
-
-    //JIRA BUTTON
-    const jiraButton = document.createElement('button');
-    jiraButton.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i>';
-    jiraButton.classList.add('jira-btn');
-    todoDivThursday.appendChild(jiraButton);
-
-    //TRASH BUTTON
-    const trashButton = document.createElement('button');
-    trashButton.innerHTML = '<i class="fas fa-trash"></i>';
-    trashButton.classList.add('trash-btn');
-    todoDivThursday.appendChild(trashButton);
-
-    //APPEND TO LIST
-    todoListThursday.appendChild(todoDivThursday);
-
-    //CLEAR TODO INPUT VALUE
-    todoInputThursday.value = '';
-}
-
-//ADD TODO FRIDAY
-function addTodoFriday(event) {
-    //Prevent form from submiting
-    event.preventDefault();
-
-    //Todo div 
-    const todoDivFriday = document.createElement('div');
-    todoDivFriday.classList.add('todo');
-
-    //Create li
-    const newTodoFriday = document.createElement('li');
-    newTodoFriday.innerText = todoInputFriday.value;
-    newTodoFriday.classList.add('todo-item');
-
-    //Append li element to the list div
-    todoDivFriday.appendChild(newTodoFriday);
-
-
-
-    //CHECKMARK BUTTON
-    const completedButton = document.createElement('button');
-    completedButton.innerHTML = '<i class="fas fa-check"> D / U </i>';
-    completedButton.classList.add('complete-btn');
-    todoDivFriday.appendChild(completedButton);
-
-    //JIRA BUTTON
-    const jiraButton = document.createElement('button');
-    jiraButton.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i>';
-    jiraButton.classList.add('jira-btn');
-    todoDivFriday.appendChild(jiraButton);
-
-    //TRASH BUTTON
-    const trashButton = document.createElement('button');
-    trashButton.innerHTML = '<i class="fas fa-trash"></i>';
-    trashButton.classList.add('trash-btn');
-    todoDivFriday.appendChild(trashButton);
-
-    //APPEND TO LIST
-    todoListFriday.appendChild(todoDivFriday);
-
-    //CLEAR TODO INPUT VALUE
-    todoInputFriday.value = '';
-}
-
-
 //BTN FUNCTION
 function deleteCheck(e) {
     const item = e.target;
@@ -359,6 +200,28 @@ function deleteCheck(e) {
         });
     }
     //CHECKMARK
+    if (item.classList[0] === 'html-btn') {
+        const todo = item.parentElement;
+        todo.classList.toggle("htmlDone");
+
+        const day = getDayFromTodoList(todo.parentNode);
+        const taskText = todo.querySelector('.todo-item').innerText;
+        
+        const htmlDoneTasks = JSON.parse(localStorage.getItem(`${day}_htmlDone`)) || [];
+        
+        if (todo.classList.contains('htmlDone')) {
+            htmlDoneTasks.push(taskText);
+        } else {
+            const index = htmlDoneTasks.indexOf(taskText);
+            if (index !== -1) {
+                htmlDoneTasks.splice(index, 1);
+            }
+        }
+
+        localStorage.setItem(`${day}_htmlDone`, JSON.stringify(htmlDoneTasks));
+    }
+
+
     if (item.classList[0] === 'complete-btn') {
         const todo = item.parentElement;
         todo.classList.toggle("doneUp");
@@ -427,6 +290,13 @@ function filterTodo(e) {
                 case "all":
                     todo.style.display = 'flex';
                     break;
+                case "htmlReady":
+                    if (todo.classList.contains('htmlDone') && !todo.classList.contains('doneUp') && !todo.classList.contains('completed')) {
+                        todo.style.display = 'flex';
+                    } else {
+                        todo.style.display = "none";
+                    }
+                    break;
                 case "completed":
                     if (todo.classList.contains('doneUp') && !todo.classList.contains('completed')) {
                         todo.style.display = 'flex';
@@ -461,6 +331,13 @@ function filterTodo(e) {
             switch(e.target.value) {
                 case "all":
                     todo.style.display = 'flex';
+                    break;
+                case "htmlReady":
+                        if (todo.classList.contains('htmlDone') && !todo.classList.contains('doneUp') && !todo.classList.contains('completed')) {
+                            todo.style.display = 'flex';
+                        } else {
+                            todo.style.display = "none";
+                        }
                     break;
                 case "completed":
                     if (todo.classList.contains('doneUp') && !todo.classList.contains('completed')) {
@@ -497,6 +374,13 @@ function filterTodo(e) {
                 case "all":
                     todo.style.display = 'flex';
                     break;
+                case "htmlReady":
+                        if (todo.classList.contains('htmlDone') && !todo.classList.contains('doneUp') && !todo.classList.contains('completed')) {
+                            todo.style.display = 'flex';
+                        } else {
+                            todo.style.display = "none";
+                        }
+                    break;
                 case "completed":
                     if (todo.classList.contains('doneUp') && !todo.classList.contains('completed')) {
                         todo.style.display = 'flex';
@@ -531,6 +415,13 @@ function filterTodo(e) {
             switch(e.target.value) {
                 case "all":
                     todo.style.display = 'flex';
+                    break;
+                case "htmlReady":
+                        if (todo.classList.contains('htmlDone') && !todo.classList.contains('doneUp') && !todo.classList.contains('completed')) {
+                            todo.style.display = 'flex';
+                        } else {
+                            todo.style.display = "none";
+                        }
                     break;
                 case "completed":
                     if (todo.classList.contains('doneUp') && !todo.classList.contains('completed')) {
@@ -567,6 +458,13 @@ function filterTodo(e) {
                 case "all":
                     todo.style.display = 'flex';
                     break;
+                case "htmlReady":
+                        if (todo.classList.contains('htmlDone') && !todo.classList.contains('doneUp') && !todo.classList.contains('completed')) {
+                            todo.style.display = 'flex';
+                        } else {
+                            todo.style.display = "none";
+                        }
+                    break;
                 case "completed":
                     if (todo.classList.contains('doneUp') && !todo.classList.contains('completed')) {
                         todo.style.display = 'flex';
@@ -600,6 +498,7 @@ function filterTodo(e) {
 function saveTasksToLocalStorage(day, tasks) {
     localStorage.setItem(day, JSON.stringify(tasks));
 }
+
 
 
 
