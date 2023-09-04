@@ -199,6 +199,7 @@ function deleteCheck(e) {
             todo.remove();
         });
     }
+    
     //CHECKMARK
     if (item.classList[0] === 'html-btn') {
         const todo = item.parentElement;
