@@ -3,7 +3,11 @@ todo app JIRA tracking
 
 Introduction
 
-Welcome to the todoList-workDays repository! This project is a simple and lightweight to-do list application that focuses on helping you manage tasks efficiently, specifically targeting workdays. This application allows you to create, update, and delete tasks, ensuring you stay organized and on top of your work-related responsibilities.
+Welcome to the todoList-workDays repository! This project is a simple and lightweight to-do 
+list application that focuses on helping you manage tasks efficiently, specifically targeting 
+workdays. This application allows you to create, update, and delete tasks, ensuring you stay 
+organized and on top of your work-related responsibilities.
+
 Features
 
     Task Creation: Easily add tasks to the due date day by providing a title.
@@ -65,4 +69,5 @@ License
 
 This project is licensed under the MIT License.
 
-Thank you for using the todoList-workDays application. If you encounter any issues or have suggestions for improvements, please feel free to open an issue on this repository. Happy task managing!
+Thank you for using the todoList-workDays application. If you encounter any issues or have suggestions for 
+improvements, please feel free to open an issue on this repository. Happy task managing!
