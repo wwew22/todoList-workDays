@@ -11,10 +11,14 @@ organized and on top of your work-related responsibilities.
 Features
 
     Task Creation: Easily add tasks to the due date day by providing a title.
-    Task Management: Mark tasks as complete, assigned back/closed, and remove tasks when they are no longer needed/when you start a new week.
-    Workday Focus: Designed to help you manage tasks specifically during workdays, helping you stay productive.
-    User-Friendly Interface: The user interface is intuitive and easy to navigate, making task management a breeze.
-    Responsive Design: Access and manage your tasks from various devices, including desktops, tablets, and mobile phones.
+    Task Management: Mark tasks as complete, assigned back/closed, and remove tasks 
+    when they are no longer needed/when you start a new week.
+    Workday Focus: Designed to help you manage tasks specifically during workdays, 
+    helping you stay productive.
+    User-Friendly Interface: The user interface is intuitive and easy to navigate, 
+    making task management a breeze.
+    Responsive Design: Access and manage your tasks from various devices, including 
+    desktops, tablets, and mobile phones.
 
 Installation
 
