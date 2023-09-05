@@ -62,6 +62,14 @@ document.addEventListener("click", function(e) {
     }
 });
 
+document.addEventListener("click", function(e) {
+    if (e.target.classList.contains('jira-btn')) {
+        const todo = e.target.parentElement;
+        const day = getDayFromTodoList(todo.parentNode);
+        updateJiraButtonColor(todo, day);
+    }
+});
+
 filterOptions.addEventListener("click", filterTodo);
 
 //FUNCTIONS
@@ -83,7 +91,6 @@ function loadTasksFromLocalStorage(day, taskList) {
     const tasks = JSON.parse(localStorage.getItem(day)) || [];
     const doneUpTasks = JSON.parse(localStorage.getItem(`${day}_doneUp`)) || [];
     const completedTasks = JSON.parse(localStorage.getItem(`${day}_completed`)) || [];
-
     const htmlDoneTasks = JSON.parse(localStorage.getItem(`${day}_htmlDone`)) || [];
 
     tasks.forEach(task => {
@@ -126,17 +133,18 @@ function loadTasksFromLocalStorage(day, taskList) {
         if (completedTasks.includes(task)) {
             todoDiv.classList.add('completed');
         }
+
         updateHtmlButtonColor(todoDiv, day);
+        updateJiraButtonColor(todoDiv, day);
         taskList.appendChild(todoDiv);
     });
 }
+
 loadTasksFromLocalStorage('monday', todoList);
 loadTasksFromLocalStorage('tuesday', todoListTuesday);
 loadTasksFromLocalStorage('wednesday', todoListWednesday);
 loadTasksFromLocalStorage('thursday', todoListThursday);
 loadTasksFromLocalStorage('friday', todoListFriday);
-
-
 
 //ADD TODO
 function addTodo(event, day, inputField, taskList) {
@@ -276,29 +284,60 @@ function deleteCheck(e) {
 //CHANGE BG OF HTML READY BTN
 function updateHtmlButtonColor(todo, day) {
     const htmlButton = todo.querySelector('.html-btn');
+
     if (todo.classList.contains('doneUp')) {
         htmlButton.classList.add('doneUp');
     } else {
         htmlButton.classList.remove('doneUp');
     }
-    
-    // Save HTML button color to local storage
+
     const taskText = todo.querySelector('.todo-item').innerText;
-    const htmlDoneTasks = JSON.parse(localStorage.getItem(`${day}_htmlDone`)) || [];
-    const buttonColor = htmlButton.style.backgroundColor || '';
-    const taskIndex = htmlDoneTasks.indexOf(taskText);
+    const completedTasks = JSON.parse(localStorage.getItem(`${day}_doneUp`)) || [];
+    const buttonColor = htmlButton.classList.contains('doneUp') ? 'doneUp' : '';
+    const taskIndex = completedTasks.indexOf(taskText);
 
     if (buttonColor) {
         if (taskIndex === -1) {
-            htmlDoneTasks.push(taskText);
+            completedTasks.push(taskText);
         }
     } else {
         if (taskIndex !== -1) {
-            htmlDoneTasks.splice(taskIndex, 1);
+            completedTasks.splice(taskIndex, 1);
         }
     }
 
-    localStorage.setItem(`${day}_htmlDone`, JSON.stringify(htmlDoneTasks));
+    localStorage.setItem(`${day}_doneUp`, JSON.stringify(completedTasks));
+}
+
+
+function updateJiraButtonColor(todo, day) {
+    const htmlButton = todo.querySelector('.html-btn');
+    const doneBtn = todo.querySelector('.complete-btn');
+
+    if (todo.classList.contains('completed')) {
+        htmlButton.classList.add('completed');
+        doneBtn.classList.add('completed');
+    } else {
+        htmlButton.classList.remove('completed');
+        doneBtn.classList.remove('completed');
+    }
+
+    const taskText = todo.querySelector('.todo-item').innerText;
+    const completedTasks = JSON.parse(localStorage.getItem(`${day}_completed`)) || [];
+    const buttonColor = htmlButton.classList.contains('completed') ? 'completed' : '';
+    const taskIndex = completedTasks.indexOf(taskText);
+
+    if (buttonColor) {
+        if (taskIndex === -1) {
+            completedTasks.push(taskText);
+        }
+    } else {
+        if (taskIndex !== -1) {
+            completedTasks.splice(taskIndex, 1);
+        }
+    }
+
+    localStorage.setItem(`${day}_completed`, JSON.stringify(completedTasks));
 }
 
 //Get Days for local storage trashBtn
