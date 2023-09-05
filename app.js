@@ -103,25 +103,21 @@ function loadTasksFromLocalStorage(day, taskList) {
         todoDiv.appendChild(newTodo);
 
         const htmlButton = document.createElement('button');
-        htmlButton.title = "HTML Ready";
         htmlButton.innerHTML = '<i class="fa-regular fa-file-code fa-xl"></i>';
         htmlButton.classList.add('html-btn');
         todoDiv.appendChild(htmlButton);
 
         const completedButton = document.createElement('button');
-        completedButton.title = "DONE and UP";
         completedButton.innerHTML = '<i class="fa-regular fa-square-check fa-xl"></i>';
         completedButton.classList.add('complete-btn');
         todoDiv.appendChild(completedButton);
 
         const jiraButton = document.createElement('button');
-        jiraButton.title = "ASSIGN BACK"
         jiraButton.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i>';
         jiraButton.classList.add('jira-btn');
         todoDiv.appendChild(jiraButton);
 
         const trashButton = document.createElement('button');
-        trashButton = "REMOVE TASK"
         trashButton.innerHTML = '<i class="fas fa-trash"></i>';
         trashButton.classList.add('trash-btn');
         todoDiv.appendChild(trashButton);
