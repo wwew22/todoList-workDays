@@ -54,6 +54,14 @@ todoButtonFriday.addEventListener("click", function(event) {
     addTodo(event, 'friday', todoInputFriday, todoListFriday);
 });
 
+document.addEventListener("click", function(e) {
+    if (e.target.classList.contains('complete-btn')) {
+        const todo = e.target.parentElement;
+        const day = getDayFromTodoList(todo.parentNode);
+        updateHtmlButtonColor(todo, day);
+    }
+});
+
 filterOptions.addEventListener("click", filterTodo);
 
 //FUNCTIONS
@@ -293,13 +301,6 @@ function updateHtmlButtonColor(todo, day) {
     localStorage.setItem(`${day}_htmlDone`, JSON.stringify(htmlDoneTasks));
 }
 
-document.addEventListener("click", function(e) {
-    if (e.target.classList.contains('complete-btn')) {
-        const todo = e.target.parentElement;
-        const day = getDayFromTodoList(todo.parentNode);
-        updateHtmlButtonColor(todo, day);
-    }
-});
 //Get Days for local storage trashBtn
 function getDayFromTodoList(todoList) {
     if (todoList === todoListTuesday) {
