@@ -118,7 +118,7 @@ function loadTasksFromLocalStorage(day, taskList) {
         if (completedTasks.includes(task)) {
             todoDiv.classList.add('completed');
         }
-
+        updateHtmlButtonColor(todoDiv, day);
         taskList.appendChild(todoDiv);
     });
 }
@@ -265,6 +265,41 @@ function deleteCheck(e) {
         localStorage.setItem(`${day}_completed`, JSON.stringify(completedTasks));
     }
 }
+//CHANGE BG OF HTML READY BTN
+function updateHtmlButtonColor(todo, day) {
+    const htmlButton = todo.querySelector('.html-btn');
+    if (todo.classList.contains('doneUp')) {
+        htmlButton.classList.add('doneUp');
+    } else {
+        htmlButton.classList.remove('doneUp');
+    }
+    
+    // Save HTML button color to local storage
+    const taskText = todo.querySelector('.todo-item').innerText;
+    const htmlDoneTasks = JSON.parse(localStorage.getItem(`${day}_htmlDone`)) || [];
+    const buttonColor = htmlButton.style.backgroundColor || '';
+    const taskIndex = htmlDoneTasks.indexOf(taskText);
+
+    if (buttonColor) {
+        if (taskIndex === -1) {
+            htmlDoneTasks.push(taskText);
+        }
+    } else {
+        if (taskIndex !== -1) {
+            htmlDoneTasks.splice(taskIndex, 1);
+        }
+    }
+
+    localStorage.setItem(`${day}_htmlDone`, JSON.stringify(htmlDoneTasks));
+}
+
+document.addEventListener("click", function(e) {
+    if (e.target.classList.contains('complete-btn')) {
+        const todo = e.target.parentElement;
+        const day = getDayFromTodoList(todo.parentNode);
+        updateHtmlButtonColor(todo, day);
+    }
+});
 //Get Days for local storage trashBtn
 function getDayFromTodoList(todoList) {
     if (todoList === todoListTuesday) {
