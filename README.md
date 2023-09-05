@@ -11,13 +11,13 @@ organized and on top of your work-related responsibilities.
 Features
 
     Task Creation: Easily add tasks to the due date day by providing a title.
-    Task Management: Mark tasks as complete, assigned back/closed, and remove tasks 
-    when they are no longer needed/when you start a new week.
+    Task Management: Mark tasks as HTML ready, completed, assigned back/closed, and remove tasks 
+    when they are no longer needed or at the end of the week.
     Workday Focus: Designed to help you manage tasks specifically during workdays, 
     helping you stay productive.
     User-Friendly Interface: The user interface is intuitive and easy to navigate, 
     making task management a breeze.
-    Responsive Design: Access and manage your tasks from various devices, including 
+    Responsive Design: Add and manage your tasks on various devices, including 
     desktops, tablets, and mobile phones.
 
 Installation
@@ -50,11 +50,13 @@ sql
 
 Usage
 
-    Add a Task: Click on the "Add Task" button and fill in the required details for your task. Click "Save" to add it to your list.
+    Add a Task: Click on the "Add Task (+ icon)" button after filling the required title/tracking number of your task.
 
-    Edit a Task: To edit a task, click on the task you want to edit. Update the task details and click "Save Changes" to confirm.
+    Mark as HTML ready: Click on the HTML ready button (file-code icon) to mark the task as HTML ready.
 
-    Complete a Task: Mark a task as complete by checking the checkbox next to the task. Completed tasks will be visually distinguished.
+    Completed Tasks: Mark a task as complete by checking the green checkbox next to the task. Completed tasks will be visually distinguished.
+
+    Reassigned Tasks: Mark a task as assigned by clicking the cloud icon button next to the task. Reassigned tasks tasks will be visually distinguished.
 
     Delete a Task: Remove a task from your list by clicking the "Delete" button associated with the task.
 
