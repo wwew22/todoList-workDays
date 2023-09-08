@@ -57,12 +57,11 @@ h1 {
     flex-wrap: wrap;
     padding: 1rem 3rem;
     gap: 2rem;
-    /* USER SELECT */
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari, Chrome, Opera, Samsung */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* Edge, IE */
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none;
+    -khtml-user-select: none; 
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
 }
 
@@ -167,6 +166,10 @@ form button:hover {
     display: flex;
     justify-content: space-between;
     transition: all .4s ease;
+    -webkit-box-shadow: 6px 14px 21px -17px rgba(0,0,0,0.75);
+    -moz-box-shadow: 6px 14px 21px -17px rgba(0,0,0,0.75);
+    box-shadow: 6px 14px 21px -17px rgba(0,0,0,0.75);
+    -webkit-user-drag: element;
 }
 
 .todo li {
@@ -187,7 +190,7 @@ form button:hover {
     padding: 1rem .6rem;
     cursor: pointer;
     font-size: 1rem;
-    transition: all .1s ease;
+    transition: all .2s ease;
 }
 
 .trash-btn:hover, 
@@ -196,13 +199,11 @@ form button:hover {
 .html-btn:hover {
     transform: scale(120%);
 }
-
-
+ 
 .html-btn {
     background: #5cb8df;
     color: white;
 }
-
 
 .jira-btn {
     background: #2E86AB;
@@ -247,9 +248,7 @@ form button:hover {
 }
 
 .doneUp {
-    color: white;
-    text-decoration: line-through #335C67;
-    text-decoration-thickness: 10%;
+    color: white; 
     opacity: 0.6;
     background: #70A288;
 }
@@ -263,6 +262,7 @@ form button:hover {
 }
 
 .fall {
+   
     transform: translateX(-10rem);
     opacity: 0;
 }
@@ -310,7 +310,7 @@ select {
     pointer-events: none;
     display: flex;
     transition: all 0.3s ease;
-    background: #373f51;
+    background: #131927;
 } 
 
 .select:hover::after {
@@ -320,7 +320,7 @@ select {
 }
 
 .filter-todo {
-    background-color: #373f51;
+    background-color: #131927;
     color: #ffffff;
 }
 

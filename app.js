@@ -307,9 +307,7 @@ function updateHtmlButtonColor(todo, day) {
     }
 
     localStorage.setItem(`${day}_doneUp`, JSON.stringify(completedTasks));
-}
-
-
+} 
 function updateJiraButtonColor(todo, day) {
     const htmlButton = todo.querySelector('.html-btn');
     const doneBtn = todo.querySelector('.complete-btn');
@@ -338,7 +336,7 @@ function updateJiraButtonColor(todo, day) {
     }
 
     localStorage.setItem(`${day}_completed`, JSON.stringify(completedTasks));
-}
+} 
 
 //Get Days for local storage trashBtn
 function getDayFromTodoList(todoList) {
@@ -356,7 +354,6 @@ function getDayFromTodoList(todoList) {
 }
 
 //FILTER LIST ITEMS
-
 function filterTodo(e) {
     //FILTER MONDAY
     const todos = todoList.childNodes;
@@ -568,8 +565,7 @@ function filterTodo(e) {
         }
     });
 }
-
-
+ 
 //ADDING TO LOCAL STORAGE
 function saveTasksToLocalStorage(day, tasks) {
     localStorage.setItem(day, JSON.stringify(tasks));
