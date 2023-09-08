@@ -169,7 +169,6 @@ form button:hover {
     -webkit-box-shadow: 6px 14px 21px -17px rgba(0,0,0,0.75);
     -moz-box-shadow: 6px 14px 21px -17px rgba(0,0,0,0.75);
     box-shadow: 6px 14px 21px -17px rgba(0,0,0,0.75);
-    -webkit-user-drag: element;
 }
 
 .todo li {
@@ -178,6 +177,11 @@ form button:hover {
     flex: 1;
     font-size: 1rem;
     user-select: text;
+    -webkit-touch-callout: text; 
+    -webkit-user-select: text;
+    -khtml-user-select: text; 
+    -moz-user-select: text;
+    -ms-user-select: text;
 }
 
 .trash-btn, 
