@@ -330,3 +330,21 @@ option {
 }
 
 
+
+@media only screen and (max-width: 600px) {
+    .trash-btn:hover, 
+    .complete-btn:hover, 
+    .jira-btn:hover, 
+    .html-btn:hover {
+    transform: none;
+}
+    .trash-btn:active, 
+    .complete-btn:active, 
+    .jira-btn:active, 
+    .html-btn:active {
+    transform: scale(120%); 
+}
+
+
+}
+
