@@ -346,7 +346,8 @@ option {
     .complete-btn:active, 
     .jira-btn:active, 
     .html-btn:active {
-    transform: scale(-10%) 
+    transform: scale(-10%);
+    -webkit-transform: scale(-10%);
 } 
 }
 
@@ -364,7 +365,8 @@ option {
         .complete-btn:active, 
         .jira-btn:active, 
         .html-btn:active {
-        transform: scale(-10%); 
+        transform: scale(-10%);
+        -webkit-transform: scale(-10%); 
     } 
     }
 
