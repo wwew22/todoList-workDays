@@ -107,8 +107,8 @@ form input, form button {
     border: none;
     background: white;
     font-family: 'Roboto', sans-serif !important;
+    text-transform: uppercase;
 }
-
 
 .todo-input,
 .todo-input-tuesday,
@@ -137,7 +137,6 @@ form button:hover {
     background: #335C67;
     color: white;
 }
-
 
 .todo-container,
 .todo-container-tuesday,
@@ -176,6 +175,7 @@ form button:hover {
     font-weight: 300;
     flex: 1;
     font-size: 1rem;
+    text-transform: uppercase;
     user-select: text;
     -webkit-touch-callout: text; 
     -webkit-user-select: text;
@@ -188,7 +188,6 @@ form button:hover {
 .complete-btn, 
 .jira-btn, 
 .html-btn {
-    background: #E1B07E;
     color: white;
     border: none;
     padding: 1rem .6rem;
@@ -209,18 +208,23 @@ form button:hover {
     color: white;
 }
 
+.complete-btn {
+    color: white;
+    background: #70A288;
+    padding: 0.6rem;
+}
+
 .jira-btn {
     background: #2E86AB;
     color: white;
 }
 
-.fa-jira {
-    margin-left: 10px;
+.trash-btn {
+    background: #E1B07E;
 }
 
-.complete-btn {
-    background: #70A288;
-    padding: 0.6rem;
+.fa-jira {
+    margin-left: 10px;
 }
 
 .todo-item {
@@ -231,19 +235,11 @@ form button:hover {
 }
 
 .fa-trash,
-.fa-cloud-arrow-up {
-    pointer-events: none;
-    font-size: 1rem;
-}
-
-.fa-square-check {
-    pointer-events: none;
-}
-
+.fa-cloud-arrow-up,
+.fa-square-check,
 .fa-file-code {
     pointer-events: none;
 }
-
 
 .htmlDone {
     background: #5cb8df;
@@ -259,14 +255,19 @@ form button:hover {
 
 .completed {
     color: white;
-    text-decoration: line-through #000;
+    text-decoration: line-through;
     text-decoration-thickness: 10%;
     opacity: 0.2;
     background: #2E86AB;
 }
 
+.htmlDone button,
+.doneUp button,
+.completed button {
+    opacity: 1 !important;
+}
+
 .fall {
-   
     transform: translateX(-10rem);
     opacity: 0;
 }
@@ -280,7 +281,6 @@ select {
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     font-weight: 300;
-
 }
 
 .select {
@@ -289,7 +289,6 @@ select {
     overflow: hidden;
     position: fixed;
     width: 100%;
-    
 }
 
 select {
@@ -332,8 +331,6 @@ option {
     font-weight: 300;
     font-size: 1.2rem;
 }
-
-
 
 @media only screen and (max-width: 686px) {
     .trash-btn:hover, 

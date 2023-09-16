@@ -70,6 +70,7 @@ document.addEventListener("click", function(e) {
     }
 });
 
+
 filterOptions.addEventListener("click", filterTodo);
 
 //FUNCTIONS
@@ -378,7 +379,7 @@ function filterTodo(e) {
                     }
                     break;
                 case "uncompleted": 
-                    if (!todo.classList.contains('doneUp') && !todo.classList.contains('completed')) {
+                    if (!todo.classList.contains('doneUp') && !todo.classList.contains('completed') && !todo.classList.contains('htmlDone')) {
                         todo.style.display = 'flex';
                     } else {
                         todo.style.display = "none";
@@ -420,7 +421,7 @@ function filterTodo(e) {
                     }
                     break;
                 case "uncompleted": 
-                    if (!todo.classList.contains('doneUp') && !todo.classList.contains('completed')) {
+                    if (!todo.classList.contains('doneUp') && !todo.classList.contains('completed') && !todo.classList.contains('htmlDone')) {
                         todo.style.display = 'flex';
                     } else {
                         todo.style.display = "none";
@@ -462,7 +463,7 @@ function filterTodo(e) {
                     }
                     break;
                 case "uncompleted": 
-                    if (!todo.classList.contains('doneUp') && !todo.classList.contains('completed')) {
+                    if (!todo.classList.contains('doneUp') && !todo.classList.contains('completed') && !todo.classList.contains('htmlDone')) {
                         todo.style.display = 'flex';
                     } else {
                         todo.style.display = "none";
@@ -504,7 +505,7 @@ function filterTodo(e) {
                     }
                     break;
                 case "uncompleted": 
-                    if (!todo.classList.contains('doneUp') && !todo.classList.contains('completed')) {
+                    if (!todo.classList.contains('doneUp') && !todo.classList.contains('completed') && !todo.classList.contains('htmlDone')) {
                         todo.style.display = 'flex';
                     } else {
                         todo.style.display = "none";
@@ -546,7 +547,7 @@ function filterTodo(e) {
                     }
                     break;
                 case "uncompleted": 
-                    if (!todo.classList.contains('doneUp') && !todo.classList.contains('completed')) {
+                    if (!todo.classList.contains('doneUp') && !todo.classList.contains('completed') && !todo.classList.contains('htmlDone')) {
                         todo.style.display = 'flex';
                     } else {
                         todo.style.display = "none";
@@ -570,9 +571,6 @@ function filterTodo(e) {
 function saveTasksToLocalStorage(day, tasks) {
     localStorage.setItem(day, JSON.stringify(tasks));
 }
-
-
-
 
 
 
